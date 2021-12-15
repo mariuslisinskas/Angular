@@ -1,0 +1,36 @@
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
+
+@Component({
+  selector: 'app-add-atsiliepimas',
+  templateUrl: './add-atsiliepimas.component.html',
+  styleUrls: ['./add-atsiliepimas.component.css']
+})
+export class AddAtsiliepimasComponent implements OnInit {
+
+    @Output() updateAtsiliepimai=new EventEmitter();
+    vardas='';
+    tekstas='';
+
+  constructor(private http:HttpClient) { }
+
+  ngOnInit(): void {
+  }
+
+
+    postAtsiliepimas(){
+        const a = {
+            vardas:this.vardas,
+            tekstas:this.tekstas
+        };
+        this.http
+            .post('https://atsiliepimai-8658b-default-rtdb.europe-west1.firebasedatabase.app/atsiliepimai.json', a)
+            .subscribe((response)=>{
+                console.log(response);
+                this.updateAtsiliepimai.emit();
+                this.vardas='';
+                this.tekstas='';
+        });
+    }
+}

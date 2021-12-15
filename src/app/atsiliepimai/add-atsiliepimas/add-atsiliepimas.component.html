@@ -1,0 +1,16 @@
+<div class="col-md-12">
+    <div class="card mt-3">
+        <div class="card-header">Prideti atsiliepima</div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="" class="form-label">Iveskite vardar:</label>
+                <input type="text" class="form-control" [(ngModel)]="vardas">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Iveskite atsiliepima</label>
+                <input type="text" class="form-control" [(ngModel)]="tekstas">
+            </div>
+            <button class="btn btn-success" (click)="postAtsiliepimas()" [disabled]="vardas==''|| tekstas==''" >Prideti atsiliepima</button>
+        </div>
+    </div>
+</div>
